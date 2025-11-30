@@ -40,6 +40,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.blackmouth.Screens.Components.Header
+import com.example.blackmouth.Screens.Components.LoginButton
+import com.example.blackmouth.Screens.Components.TextFieldEmail
+import com.example.blackmouth.Screens.Components.TextFieldPassword
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
@@ -56,20 +60,7 @@ fun LoginScreen(){
             horizontalAlignment = Alignment.CenterHorizontally,
             verticalArrangement = Arrangement.Center
         ) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth(),
-                contentAlignment = Alignment.Center
-            ){
-
-                Icon(
-                    imageVector = Icons.Default.ShoppingCart, //cambiar icono por uno de hamburguesa
-                    contentDescription = "icono",
-                    modifier = Modifier.size(90.dp),
-                    tint = Color.White
-                )
-
-            }
+            Header()
         }
         Column(
             modifier = Modifier
@@ -96,27 +87,7 @@ fun LoginScreen(){
             TextFieldEmail("Email")
             TextFieldPassword("Contraseña")
 
-            Button(onClick = {},
-                colors = ButtonDefaults.buttonColors(
-                    containerColor = Color.DarkGray
-                ),
-                modifier = Modifier
-                    .padding(horizontal = 30.dp)
-                    .fillMaxWidth()
-                    .height(65.dp)
-            ) {
-                Row {
-                    Text("Login",
-                        fontSize = 18.sp,
-                        color = Color.White)
-
-                    Icon(
-                        imageVector = Icons.Default.ArrowForward,
-                        contentDescription = null
-                    )
-                }
-
-            }
+            LoginButton("Iniciar Sesión")
 
             Text("No tienes cuenta? Registrate",
                 modifier = Modifier
@@ -127,74 +98,6 @@ fun LoginScreen(){
         }
     }
 }
-
-@Composable
-fun TextFieldEmail(entry : String) {
-    var texto by remember { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = texto,
-        onValueChange = { texto = it },
-        label = { Text(entry,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-        )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Email,
-                contentDescription = null
-            )
-        },
-        modifier = Modifier
-            .padding(horizontal = 30.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp)),
-        shape = RoundedCornerShape(16.dp),
-        colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color.White,
-            focusedContainerColor = Color.White,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        )
-    )
-}
-
-@Composable
-fun TextFieldPassword(entry: String) {
-    var texto by remember { mutableStateOf("") }
-
-    OutlinedTextField(
-        value = texto,
-        onValueChange = { texto = it },
-        label = {
-            Text(
-                entry,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black,
-            )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Lock,
-                contentDescription = null
-            )
-        },
-        modifier = Modifier
-            .padding(horizontal = 30.dp)
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(16.dp)),
-        shape = RoundedCornerShape(16.dp),
-        colors = TextFieldDefaults.colors(
-            unfocusedContainerColor = Color.White,
-            focusedContainerColor = Color.White,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedIndicatorColor = Color.Transparent
-        ),
-        visualTransformation = PasswordVisualTransformation()
-    )
-}
-
 
 @Composable
 @Preview
