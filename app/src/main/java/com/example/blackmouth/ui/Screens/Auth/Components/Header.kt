@@ -1,4 +1,4 @@
-package com.example.blackmouth.Screens.Components
+package com.example.blackmouth.ui.Screens.Auth.Components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxWidth

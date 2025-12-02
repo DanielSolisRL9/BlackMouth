@@ -1,4 +1,4 @@
-package com.example.blackmouth.Screens.Components
+package com.example.blackmouth.ui.Screens.Auth.Components
 
 import android.R
 import androidx.compose.foundation.layout.Row

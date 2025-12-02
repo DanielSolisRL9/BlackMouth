@@ -1,12 +1,10 @@
-package com.example.blackmouth.Screens
+package com.example.blackmouth.ui.Screens.Auth
 
 import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -22,10 +20,10 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.blackmouth.Screens.Components.Header
-import com.example.blackmouth.Screens.Components.LoginButton
-import com.example.blackmouth.Screens.Components.TextFieldEmail
-import com.example.blackmouth.Screens.Components.TextFieldPassword
+import com.example.blackmouth.ui.Screens.Auth.Components.Header
+import com.example.blackmouth.ui.Screens.Auth.Components.LoginButton
+import com.example.blackmouth.ui.Screens.Auth.Components.TextFieldEmail
+import com.example.blackmouth.ui.Screens.Auth.Components.TextFieldPassword
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
