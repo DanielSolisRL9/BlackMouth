@@ -18,12 +18,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TextFieldEmail(entry : String) {
+fun TextFieldEmail(entry : String, icon : ImageVector) {
     var texto by remember { mutableStateOf("") }
 
     OutlinedTextField(
@@ -36,7 +37,7 @@ fun TextFieldEmail(entry : String) {
         },
         leadingIcon = {
             Icon(
-                imageVector = Icons.Default.Email,
+                imageVector = icon,
                 contentDescription = null
             )
         },
