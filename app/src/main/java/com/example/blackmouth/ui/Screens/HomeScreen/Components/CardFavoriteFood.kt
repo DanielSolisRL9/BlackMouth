@@ -25,7 +25,7 @@ import com.example.blackmouth.ui.theme.BlackMouthTheme
 fun CardFavoriteFood() {
     Column (
         modifier = Modifier
-            .height(125.dp)
+            .height(140.dp)
             .width(150.dp)
             .clip(RoundedCornerShape(10.dp))
             .border(1.3.dp, Color.Black, RoundedCornerShape(10.dp))
@@ -47,20 +47,20 @@ fun CardFavoriteFood() {
         Column(
             modifier = Modifier
                 .padding(start = 3.dp),
-            verticalArrangement = Arrangement.spacedBy(-10.dp)
+            verticalArrangement = Arrangement.spacedBy(-7.dp)
         ){
             Text(
                 text = "Nombre",
-                fontSize = 8.sp
+                fontSize = 13.sp
             )
             Text(
                 text = "Costo",
-                fontSize = 6.sp,
+                fontSize = 10.sp,
                 color = Color.DarkGray
             )
             Text(
                 text = "Tiempo de entrega",
-                fontSize = 6.sp,
+                fontSize = 10.sp,
                 color = Color.DarkGray
             )
         }
