@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.blackmouth.ui.Screens.HomeScreen.Components.CardFavoriteFood
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.FavoriteFoodGrid
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.Header
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.LazyRowFood
@@ -85,6 +86,31 @@ fun HomeScreen(){
 
         item {
             FavoriteFoodGrid()
+        }
+
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
+
+        item{
+            Text(
+                text = "Lo mas vendido",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        item {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(5){
+                    CardFavoriteFood()
+                    //cambiar esto cuando ya este conectada a la api
+                }
+            }
         }
 
 
