@@ -26,6 +26,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.Header
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.LazyRowFood
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.OutLinedTextField
@@ -60,6 +61,32 @@ fun HomeScreen(){
         item {
             LazyRowFood()
         }
+
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
+
+        item{
+            Text(
+                text = "Vuelve a pedir tus favoritos del mes",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
+
+        item {
+
+        }
+
+
     }
 }
 
