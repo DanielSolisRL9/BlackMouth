@@ -1,6 +1,9 @@
 package com.example.blackmouth.domain.dtos
 
-class Login (
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class Login (
     val email: String,
     val password: String
 )

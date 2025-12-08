@@ -1,7 +1,10 @@
 package com.example.blackmouth.domain.dtos
 
-class AuthResponse (
+import kotlinx.serialization.Serializable
+
+@Serializable
+data class AuthResponse (
     val message : String,
     val isLogged : Boolean,
-    val userId : Int
+    val userId : Int? = null
 )

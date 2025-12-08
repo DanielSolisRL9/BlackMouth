@@ -3,6 +3,8 @@ plugins {
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
 
+    kotlin("plugin.serialization") version "2.0.21"
+
     id("com.google.devtools.ksp") version "2.2.20-2.0.4"
     id("de.jensklingenberg.ktorfit") version "2.6.4"
 
@@ -71,6 +73,12 @@ dependencies {
 
     implementation("de.jensklingenberg.ktorfit:ktorfit-lib:2.6.4")
     ksp("de.jensklingenberg.ktorfit:ktorfit-ksp:2.6.4")
+
+    implementation("io.ktor:ktor-client-core:2.3.7")
+    implementation("io.ktor:ktor-client-okhttp:2.3.7") // o CIO
+    implementation("io.ktor:ktor-client-content-negotiation:2.3.7")
+    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
+
 
 }
 
