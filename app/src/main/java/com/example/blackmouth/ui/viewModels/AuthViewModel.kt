@@ -3,6 +3,7 @@ package com.example.blackmouth.ui.viewModels
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.blackmouth.data.ktorfitClient
+import com.example.blackmouth.domain.dtos.Login
 import com.example.blackmouth.domain.dtos.Register
 import kotlinx.coroutines.launch
 
@@ -33,8 +34,30 @@ class AuthViewModel {
             }
         }
 
+        fun login(
+            email: String,
+            password: String,
+            onResult: (Boolean, String) -> Unit
+        ){
+            viewModelScope.launch {
+                try {
+                    val service = ktorfitClient.createAuthService()
+                    val loginBody = Login(email, password)
+
+                    val result = service.login(loginBody)
+
+                    if (result.isLogged){
+                        onResult(true, result.message)
+                    } else {
+                        onResult(false, result.message)
+                    }
+
+                } catch (e : Exception){
+                    onResult(false, "Error al iniciar sesión: ${e.message}")
+
+                }
+            }
+        }
+
     }
-
-
-
 }
