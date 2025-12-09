@@ -1,8 +1,10 @@
 package com.example.blackmouth.domain.models
 
+import java.util.UUID
+
 data class Order(
-    val id: String? = null,
-    val user_id: String,
+    val id: UUID? = null,
+    val userID: UUID,
     val items: List<OrderItem>,
-    val status: String = "cart"
+    val status: String
 )
