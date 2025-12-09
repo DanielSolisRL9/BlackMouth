@@ -1,19 +1,26 @@
 package com.example.blackmouth.data.services
 
-import com.example.blackmouth.domain.dtos.AuthResponse
-import com.example.blackmouth.domain.dtos.Login
-import com.example.blackmouth.domain.dtos.Register
-import de.jensklingenberg.ktorfit.http.Body
-import de.jensklingenberg.ktorfit.http.POST
+import com.example.blackmouth.domain.dtos.LoginDTO
+import com.example.blackmouth.domain.dtos.UserDTO;
+import com.example.blackmouth.domain.models.User
+import kotlin.Unit;
+import retrofit2.http.Body;
+import retrofit2.http.GET;
+import retrofit2.http.POST;
+import retrofit2.Response;
 
 interface AuthService {
 
+    @POST("users")
+    suspend fun register(
+        @Body userDTO: UserDTO
+    ): Response<Unit>
 
-    @POST ("auth/register")
-    suspend fun register (@Body register: Register) : AuthResponse
+    @GET("users")
+    suspend fun getUsers(): List<User>
 
-    @POST ("auth/login")
-    suspend fun login (@Body login: Login) : AuthResponse
-
-
+    @POST("login")
+    suspend fun login(
+        @Body loginDTO: LoginDTO
+    ): Response<User>
 }

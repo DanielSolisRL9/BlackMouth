@@ -101,6 +101,12 @@ fun HomeScreen(){
                 fontWeight = FontWeight.Bold
             )
         }
+        
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
 
         item {
             LazyRow(
