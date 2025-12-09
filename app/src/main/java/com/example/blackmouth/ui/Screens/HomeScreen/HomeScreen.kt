@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -27,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.CardFavoriteFood
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.FavoriteFoodGrid
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.Header
@@ -35,7 +37,10 @@ import com.example.blackmouth.ui.Screens.HomeScreen.Components.OutLinedTextField
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
-fun HomeScreen(){
+fun HomeScreen(
+    paddingValues: PaddingValues,
+    navController: NavController
+){
     LazyColumn (
         modifier = Modifier
             .fillMaxSize()
@@ -123,10 +128,12 @@ fun HomeScreen(){
     }
 }
 
-@Composable
-@Preview
-fun HomeScreenView(){
-    BlackMouthTheme {
-        HomeScreen()
-    }
-}
+//@Composable
+//@Preview
+//fun HomeScreenView(){
+//    BlackMouthTheme {
+//        HomeScreen(
+//
+//        )
+//    }
+//}

@@ -11,6 +11,18 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.rememberNavController
+import com.example.blackmouth.ui.Components.NavBar
+import com.example.blackmouth.ui.Screens.AccountScreenRoute
+import com.example.blackmouth.ui.Screens.Auth.LoginScreen
+import com.example.blackmouth.ui.Screens.Auth.RegisterScreen
+import com.example.blackmouth.ui.Screens.HomeScreen.HomeScreen
+import com.example.blackmouth.ui.Screens.HomeScreenRoute
+import com.example.blackmouth.ui.Screens.LoginScreenRoute
+import com.example.blackmouth.ui.Screens.RegisterScreenRoute
+import com.example.blackmouth.ui.Screens.UserScreen.UserScreen
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 class MainActivity : ComponentActivity() {
@@ -19,29 +31,51 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             BlackMouthTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
+                val navController = rememberNavController()
+
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    bottomBar = {
+                        NavBar(navController = navController)
+                    }
+                )
+                { innerPadding ->
+                    NavHost(
+                        navController = navController,
+                        startDestination = LoginScreenRoute
+                    ){
+                        composable <LoginScreenRoute>{
+                            LoginScreen(
+                                paddingValues = innerPadding,
+                                navController = navController
+                            )
+                        }
+
+                        composable<RegisterScreenRoute> {
+                            RegisterScreen(
+                                paddingValues = innerPadding,
+                                navController = navController
+                            )
+                        }
+
+                        composable<HomeScreenRoute> {
+                            HomeScreen(
+                                paddingValues = innerPadding,
+                                navController = navController
+                            )
+                        }
+
+                        composable<AccountScreenRoute>{
+                            UserScreen(
+                                paddingValues = innerPadding,
+                                navController = navController
+                            )
+                        }
+                    }
+
                 }
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    BlackMouthTheme {
-        Greeting("Android")
-    }
-}

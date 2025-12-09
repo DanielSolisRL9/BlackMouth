@@ -3,6 +3,7 @@ package com.example.blackmouth.ui.Screens.Auth
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -20,6 +21,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.blackmouth.ui.Screens.Auth.Components.Header
 import com.example.blackmouth.ui.Screens.Auth.Components.LoginButton
 import com.example.blackmouth.ui.Screens.Auth.Components.TextFieldEmail
@@ -27,7 +29,10 @@ import com.example.blackmouth.ui.Screens.Auth.Components.TextFieldPassword
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
-fun RegisterScreen(){
+fun RegisterScreen(
+    paddingValues: PaddingValues,
+    navController: NavController
+){
     Column (
         modifier = Modifier
             .fillMaxSize()
@@ -71,13 +76,5 @@ fun RegisterScreen(){
 
             LoginButton("Registrate")
         }
-    }
-}
-
-@Preview
-@Composable
-fun RegisterScreenView(){
-    BlackMouthTheme {
-        RegisterScreen()
     }
 }
