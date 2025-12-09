@@ -124,6 +124,37 @@ fun HomeScreen(
             }
         }
 
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
+
+        item{
+            Text(
+                text = "Descubre ago nuevo",
+                fontSize = 20.sp,
+                fontWeight = FontWeight.Bold
+            )
+        }
+
+        item {
+            Spacer(
+                modifier = Modifier.height(10.dp)
+            )
+        }
+
+        item {
+            LazyRow(
+                horizontalArrangement = Arrangement.spacedBy(12.dp)
+            ) {
+                items(5){
+                    CardFavoriteFood()
+                    //cambiar esto cuando ya este conectada a la api
+                }
+            }
+        }
+
 
     }
 }
