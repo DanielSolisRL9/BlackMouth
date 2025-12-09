@@ -23,6 +23,8 @@ import com.example.blackmouth.ui.Screens.Auth.RegisterScreen
 import com.example.blackmouth.ui.Screens.HomeScreen.HomeScreen
 import com.example.blackmouth.ui.Screens.HomeScreenRoute
 import com.example.blackmouth.ui.Screens.LoginScreenRoute
+import com.example.blackmouth.ui.Screens.Order.orderScreen
+import com.example.blackmouth.ui.Screens.OrderScreenRoute
 import com.example.blackmouth.ui.Screens.RegisterScreenRoute
 import com.example.blackmouth.ui.Screens.UserScreen.UserScreen
 import com.example.blackmouth.ui.theme.BlackMouthTheme
@@ -75,6 +77,13 @@ class MainActivity : ComponentActivity() {
 
                         composable<AccountScreenRoute>{
                             UserScreen(
+                                paddingValues = innerPadding,
+                                navController = navController
+                            )
+                        }
+
+                        composable<OrderScreenRoute>{
+                            orderScreen(
                                 paddingValues = innerPadding,
                                 navController = navController
                             )
