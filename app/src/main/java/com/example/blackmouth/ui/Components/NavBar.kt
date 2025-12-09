@@ -9,12 +9,16 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.blackmouth.ui.Screens.AccountScreenRoute
+import com.example.blackmouth.ui.Screens.HomeScreenRoute
+import com.example.blackmouth.ui.Screens.OrderScreenRoute
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 
@@ -35,9 +39,19 @@ fun NavBar(navController: NavController){
                         .size(25.dp)
                 )
             },
+            label = {
+                Text("Home")
+            },
             onClick = {
-
+                navController.navigate(HomeScreenRoute){
+                    launchSingleTop = true
+                    popUpTo(navController.graph.startDestinationId){
+                        saveState = true
+                    }
+                    restoreState = true
+                }
             }
+
         )
 
         NavigationBarItem(
@@ -51,8 +65,17 @@ fun NavBar(navController: NavController){
                         .size(35.dp)
                 )
             },
+            label = {
+                Text("Canasta")
+            },
             onClick = {
-
+                navController.navigate(OrderScreenRoute){
+                    launchSingleTop = true
+                    popUpTo(navController.graph.startDestinationId){
+                        saveState = true
+                    }
+                    restoreState = true
+                }
             }
         )
 
@@ -67,8 +90,17 @@ fun NavBar(navController: NavController){
                         .size(25.dp)
                 )
             },
+            label = {
+                Text("Cuenta")
+            },
             onClick = {
-
+                navController.navigate(AccountScreenRoute){
+                    launchSingleTop = true
+                    popUpTo(navController.graph.startDestinationId){
+                        saveState = true
+                    }
+                    restoreState = true
+                }
             }
         )
 
