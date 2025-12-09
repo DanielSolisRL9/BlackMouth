@@ -2,12 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-
+    id("com.google.devtools.ksp")
+    // Aplicamos serialization en el módulo (misma versión de Kotlin que usas)
     kotlin("plugin.serialization") version "2.0.21"
-
-    id("com.google.devtools.ksp") version "2.2.20-2.0.4"
-    id("de.jensklingenberg.ktorfit") version "2.6.4"
-
 }
 
 android {
@@ -63,26 +60,22 @@ dependencies {
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
 
+    implementation("androidx.compose.material3:material3:1.4.0")
+    implementation("androidx.compose.material3:material3-window-size-class:1.4.0")
+    implementation("androidx.compose.material3:material3-adaptive-navigation-suite:1.5.0-alpha07")
+    implementation("com.squareup.retrofit2:retrofit:3.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:3.0.0")
+    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
+    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
     val nav_version = "2.8.9"
 
     implementation("androidx.navigation:navigation-compose:$nav_version")
-    implementation("io.coil-kt.coil3:coil-compose:3.1.0")
-    implementation("io.coil-kt.coil3:coil-network-okhttp:3.1.0")
+    implementation("org.jetbrains.compose.material:material-icons-extended:1.7.3")
+    implementation("com.github.jeziellago:compose-markdown:0.5.7")
 
-    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.7.3")
-
-    implementation("de.jensklingenberg.ktorfit:ktorfit-lib:2.6.4")
-    ksp("de.jensklingenberg.ktorfit:ktorfit-ksp:2.6.4")
-
-    implementation("io.ktor:ktor-client-core:2.3.7")
-    implementation("io.ktor:ktor-client-okhttp:2.3.7") // o CIO
-    implementation("io.ktor:ktor-client-content-negotiation:2.3.7")
-    implementation("io.ktor:ktor-serialization-kotlinx-json:2.3.7")
-
-
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-
+    implementation("androidx.datastore:datastore-preferences:1.2.0")
+    implementation("androidx.datastore:datastore:1.2.0")
 
 }
 
