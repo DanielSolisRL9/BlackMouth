@@ -38,7 +38,7 @@ fun OrderViewCard(
             .fillMaxWidth()
             .padding(horizontal = 16.dp, vertical = 8.dp)
             .border(
-                width = 6.dp,
+                width = 2.dp,
                 color = Color.Black,
                 shape = RoundedCornerShape(24.dp)
             ),
