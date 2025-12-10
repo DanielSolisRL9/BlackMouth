@@ -1,5 +1,8 @@
 package com.example.blackmouth.ui.viewModels
 
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.blackmouth.data.RetrofitClient
@@ -12,6 +15,8 @@ import retrofit2.Response
 class AuthViewModel : ViewModel() {
 
     private val service = RetrofitClient.createAuthService()
+    var isLoading by mutableStateOf(false)
+
 
     fun register(
         name: String,
@@ -21,6 +26,8 @@ class AuthViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             try {
+                isLoading = true
+
                 val body = UserDTO(name, email, password)
 
                 val response: Response<UserPublicDTO> = service.register(body)
@@ -40,6 +47,8 @@ class AuthViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 onResult(false, "Error: ${e.localizedMessage ?: "Desconocido"}")
+            } finally {
+                isLoading = false
             }
         }
     }
@@ -51,6 +60,8 @@ class AuthViewModel : ViewModel() {
     ) {
         viewModelScope.launch {
             try {
+                isLoading = true
+
                 val body = LoginDTO(email, password)
 
                 val response: Response<UserPublicDTO> = service.login(body)
@@ -72,6 +83,9 @@ class AuthViewModel : ViewModel() {
 
             } catch (e: Exception) {
                 onResult(false, "Error: ${e.localizedMessage ?: "Desconocido"}")
+            }
+            finally {
+                isLoading = false
             }
         }
     }
