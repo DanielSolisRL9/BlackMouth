@@ -5,36 +5,41 @@ import androidx.lifecycle.viewModelScope
 import com.example.blackmouth.data.RetrofitClient
 import com.example.blackmouth.domain.dtos.LoginDTO
 import com.example.blackmouth.domain.dtos.UserDTO
+import com.example.blackmouth.domain.dtos.UserPublicDTO
 import kotlinx.coroutines.launch
+import retrofit2.Response
 
 class AuthViewModel : ViewModel() {
 
     private val service = RetrofitClient.createAuthService()
 
     fun register(
-        username: String,
+        name: String,
         email: String,
         password: String,
         onResult: (Boolean, String) -> Unit
     ) {
         viewModelScope.launch {
             try {
-                val body = UserDTO(
-                    username = username,
-                    email = email,
-                    passwordHash = password
-                )
+                val body = UserDTO(name, email, password)
 
-                val response = service.register(body)
+                val response: Response<UserPublicDTO> = service.register(body)
 
                 if (response.isSuccessful) {
-                    onResult(true, "Usuario registrado correctamente")
+                    val data = response.body()
+
+                    if (data != null) {
+                        onResult(true, "Usuario registrado: ${data.username}")
+                    } else {
+                        onResult(false, "Error: respuesta vacía del servidor")
+                    }
+
                 } else {
-                    onResult(false, "Error al registrar usuario: ${response.code()}")
+                    onResult(false, "Error al registrar: ${response.code()}")
                 }
 
             } catch (e: Exception) {
-                onResult(false, "Error: ${e.message}")
+                onResult(false, "Error: ${e.localizedMessage ?: "Desconocido"}")
             }
         }
     }
@@ -47,10 +52,18 @@ class AuthViewModel : ViewModel() {
         viewModelScope.launch {
             try {
                 val body = LoginDTO(email, password)
-                val response = service.login(body)
+
+                val response: Response<UserPublicDTO> = service.login(body)
 
                 if (response.isSuccessful) {
-                    onResult(true, "Inicio de sesión exitoso")
+                    val data = response.body()
+
+                    if (data != null) {
+                        onResult(true, "Bienvenido, ${data.username}")
+                    } else {
+                        onResult(false, "Error: respuesta vacía del servidor")
+                    }
+
                 } else if (response.code() == 401) {
                     onResult(false, "Credenciales incorrectas")
                 } else {
@@ -58,7 +71,7 @@ class AuthViewModel : ViewModel() {
                 }
 
             } catch (e: Exception) {
-                onResult(false, "Error: ${e.message}")
+                onResult(false, "Error: ${e.localizedMessage ?: "Desconocido"}")
             }
         }
     }

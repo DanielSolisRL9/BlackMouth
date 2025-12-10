@@ -15,12 +15,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil3.compose.AsyncImage
 import com.example.blackmouth.domain.models.MenuItem
 import com.example.blackmouth.ui.theme.BlackMouthTheme
+
 
 @Composable
 fun CardFavoriteFood(item: MenuItem) {
@@ -41,7 +43,8 @@ fun CardFavoriteFood(item: MenuItem) {
         ) {
             AsyncImage(
                 model = item.imageURL,
-                contentDescription = item.name
+                contentDescription = item.name,
+                contentScale = ContentScale.Crop
             )
         }
 

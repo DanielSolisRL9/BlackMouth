@@ -29,6 +29,7 @@ import com.example.blackmouth.ui.Screens.OrderScreenRoute
 import com.example.blackmouth.ui.Screens.RegisterScreenRoute
 import com.example.blackmouth.ui.Screens.UserScreen.UserScreen
 import com.example.blackmouth.ui.theme.BlackMouthTheme
+import com.example.blackmouth.ui.viewModels.AuthViewModel
 import com.example.blackmouth.ui.viewModels.MenuViewModel
 
 class MainActivity : ComponentActivity() {
@@ -39,6 +40,7 @@ class MainActivity : ComponentActivity() {
 
         // 👉 Crear ViewModel correctamente
         val menuViewModel: MenuViewModel by viewModels()
+        val authViewModel: AuthViewModel by viewModels()
 
         setContent {
             BlackMouthTheme {
@@ -60,20 +62,22 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
                         navController = navController,
-                        startDestination = HomeScreenRoute
+                        startDestination = LoginScreenRoute
                     ) {
 
                         composable<LoginScreenRoute> {
                             LoginScreen(
                                 paddingValues = innerPadding,
-                                navController = navController
+                                navController = navController,
+                                viewModel = authViewModel
                             )
                         }
 
                         composable<RegisterScreenRoute> {
                             RegisterScreen(
                                 paddingValues = innerPadding,
-                                navController = navController
+                                navController = navController,
+                                viewModel = authViewModel
                             )
                         }
 
@@ -81,7 +85,7 @@ class MainActivity : ComponentActivity() {
                             HomeScreen(
                                 paddingValues = innerPadding,
                                 navController = navController,
-                                viewModel = menuViewModel // 👉 PASAR EL VIEWMODEL AQUÍ
+                                viewModel = menuViewModel
                             )
                         }
 

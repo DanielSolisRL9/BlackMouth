@@ -24,23 +24,17 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun TextFieldEmail(entry : String, icon : ImageVector) {
-    var texto by remember { mutableStateOf("") }
-
+fun TextFieldEmail(
+    entry : String,
+    icon : ImageVector,
+    value : String,
+    onValueChange: (String) -> Unit
+) {
     OutlinedTextField(
-        value = texto,
-        onValueChange = { texto = it },
-        label = { Text(entry,
-            fontWeight = FontWeight.Bold,
-            color = Color.Black,
-        )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = icon,
-                contentDescription = null
-            )
-        },
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(entry, fontWeight = FontWeight.Bold, color = Color.Black) },
+        leadingIcon = { Icon(imageVector = icon, contentDescription = null) },
         modifier = Modifier
             .padding(horizontal = 30.dp)
             .fillMaxWidth()
@@ -56,25 +50,16 @@ fun TextFieldEmail(entry : String, icon : ImageVector) {
 }
 
 @Composable
-fun TextFieldPassword(entry: String) {
-    var texto by remember { mutableStateOf("") }
-
+fun TextFieldPassword(
+    entry: String,
+    value: String,
+    onValueChange: (String) -> Unit
+) {
     OutlinedTextField(
-        value = texto,
-        onValueChange = { texto = it },
-        label = {
-            Text(
-                entry,
-                fontWeight = FontWeight.Bold,
-                color = Color.Black,
-            )
-        },
-        leadingIcon = {
-            Icon(
-                imageVector = Icons.Default.Lock,
-                contentDescription = null
-            )
-        },
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(entry, fontWeight = FontWeight.Bold, color = Color.Black) },
+        leadingIcon = { Icon(imageVector = Icons.Default.Lock, contentDescription = null) },
         modifier = Modifier
             .padding(horizontal = 30.dp)
             .fillMaxWidth()

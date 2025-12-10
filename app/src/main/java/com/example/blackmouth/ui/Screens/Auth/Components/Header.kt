@@ -22,7 +22,7 @@ fun Header(){
     ){
 
         Icon(
-            imageVector = Icons.Default.ShoppingCart, //cambiar icono por uno de hamburguesa
+            imageVector = Icons.Default.ShoppingCart,
             contentDescription = "icono",
             modifier = Modifier.size(90.dp),
             tint = Color.White

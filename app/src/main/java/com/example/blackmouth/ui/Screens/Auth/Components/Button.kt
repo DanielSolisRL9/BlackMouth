@@ -18,9 +18,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun LoginButton(accion:String){
+fun LoginButton(
+    accion: String,
+    onClick: () -> Unit
+) {
     Button(
-        onClick = {},
+        onClick = onClick,
         colors = ButtonDefaults.buttonColors(
             containerColor = Color.DarkGray
         ),
@@ -31,16 +34,14 @@ fun LoginButton(accion:String){
     ) {
         Row {
             Text(
-                accion,
+                text = accion,
                 fontSize = 18.sp,
                 color = Color.White
             )
-
             Icon(
                 imageVector = Icons.Default.ArrowForward,
                 contentDescription = null
             )
         }
-
     }
 }
