@@ -18,6 +18,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -42,9 +44,16 @@ fun HomeScreen(
     val isLoading by viewModel.isLoading.collectAsState()
     val errorMessage by viewModel.errorMessage.collectAsState()
 
-    // Ejecutar API al abrir pantalla
+    // 👉 SOLO SE EJECUTA LA PRIMERA VEZ (gracias a remember)
+    val hasLoaded = remember { mutableStateOf(false) }
+
     LaunchedEffect(Unit) {
-        viewModel.loadMenu()
+        println("MENÚ RECIBIDO: $menuItems")
+        if (!hasLoaded.value) {
+
+            viewModel.loadMenu()
+            hasLoaded.value = true
+        }
     }
 
     LazyColumn(

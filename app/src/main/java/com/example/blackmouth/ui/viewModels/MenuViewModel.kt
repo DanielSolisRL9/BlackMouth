@@ -1,5 +1,6 @@
 package com.example.blackmouth.ui.viewModels
 
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -26,10 +27,13 @@ class MenuViewModel : ViewModel() {
             try {
                 val response = RetrofitClient.createMenuService().getMenuItems()
                 _menuItems.value = response
+                // Agrega un log para confirmar que la lista se cargó (o si está vacía)
+                Log.d("API_CALL", "Menú cargado. Cantidad: ${response.size}")
             } catch (e: Exception) {
+                // AHORA IMPRIME EL STACK TRACE COMPLETO
+                Log.e("API_CALL", "Error al cargar el menú", e)
                 _errorMessage.value = e.message
             }
-            _isLoading.value = false
         }
     }
 }
