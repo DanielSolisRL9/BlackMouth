@@ -2,6 +2,7 @@ package com.example.blackmouth.ui.Screens.HomeScreen.Components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,9 +24,8 @@ import coil3.compose.AsyncImage
 import com.example.blackmouth.domain.models.MenuItem
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
-
 @Composable
-fun CardFavoriteFood(item: MenuItem) {
+fun CardFavoriteFood(item: MenuItem, onClick: () -> Unit) {
     Column(
         modifier = Modifier
             .height(140.dp)
@@ -33,8 +33,8 @@ fun CardFavoriteFood(item: MenuItem) {
             .clip(RoundedCornerShape(10.dp))
             .border(1.3.dp, Color.Black, RoundedCornerShape(10.dp))
             .background(Color.White)
+            .clickable { onClick() }
     ) {
-
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -52,27 +52,17 @@ fun CardFavoriteFood(item: MenuItem) {
             modifier = Modifier.padding(start = 3.dp),
             verticalArrangement = Arrangement.spacedBy(-7.dp)
         ) {
-            Text(
-                text = item.name,
-                fontSize = 13.sp
-            )
-            Text(
-                text = "$${item.price}",
-                fontSize = 10.sp,
-                color = Color.DarkGray
-            )
-            Text(
-                text = "Entrega 15-20 min",
-                fontSize = 10.sp,
-                color = Color.DarkGray
-            )
+            Text(item.name, fontSize = 13.sp)
+            Text("$${item.price}", fontSize = 10.sp, color = Color.DarkGray)
+            Text("Entrega 15-20 min", fontSize = 10.sp, color = Color.DarkGray)
         }
     }
 }
 
 @Preview
 @Composable
-fun CardFavoriteFoodView(){
+fun CardFavoriteFoodPreview(){
     BlackMouthTheme {
+        // Aquí puedes poner un item de prueba
     }
 }

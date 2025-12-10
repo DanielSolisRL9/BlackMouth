@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -26,13 +27,14 @@ fun MenuItemDetail(
     onAddToCart: () -> Unit,
     onClose: () -> Unit
 ) {
-    val colors = MaterialTheme.colorScheme
-
     Column(
         modifier = Modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .wrapContentHeight()
             .verticalScroll(rememberScrollState())
             .padding(16.dp)
+            .background(Color.White)
+            .clip(RoundedCornerShape(16.dp))
     ) {
         // Imagen
         AsyncImage(
@@ -40,9 +42,9 @@ fun MenuItemDetail(
             contentDescription = item?.name,
             modifier = Modifier
                 .fillMaxWidth()
-                .height(240.dp)
+                .height(200.dp)
                 .clip(RoundedCornerShape(24.dp))
-                .background(colors.primary.copy(alpha = 0.1f)),
+                .background(Color.LightGray),
             contentScale = ContentScale.Crop
         )
 
@@ -58,20 +60,20 @@ fun MenuItemDetail(
         Row(
             modifier = Modifier
                 .clip(RoundedCornerShape(40))
-                .background(colors.primary.copy(alpha = 0.15f))
+                .background(Color.LightGray)
                 .padding(horizontal = 14.dp, vertical = 10.dp)
                 .padding(top = 10.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Icon(Icons.Default.AttachMoney, null, tint = colors.primary)
+            Icon(Icons.Default.AttachMoney, null, tint = Color.Black)
             Spacer(Modifier.width(4.dp))
-            Text("${item?.price}", fontWeight = FontWeight.Bold, color = colors.primary)
+            Text("${item?.price}", fontWeight = FontWeight.Bold)
 
             Spacer(Modifier.width(12.dp))
 
-            Icon(Icons.Default.LocalDining, null, tint = colors.primary)
+            Icon(Icons.Default.LocalDining, null, tint = Color.Black)
             Spacer(Modifier.width(4.dp))
-            Text(item?.category ?: "", color = colors.primary, fontWeight = FontWeight.SemiBold)
+            Text(item?.category ?: "", color = Color.Black, fontWeight = FontWeight.SemiBold)
         }
 
         // Descripción
@@ -87,9 +89,10 @@ fun MenuItemDetail(
             modifier = Modifier.padding(top = 4.dp)
         )
 
-        // Botones
         Row(
-            modifier = Modifier.fillMaxWidth().padding(top = 20.dp),
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 20.dp),
             horizontalArrangement = Arrangement.End
         ) {
             Button(onClick = onClose) {
@@ -99,7 +102,7 @@ fun MenuItemDetail(
             Spacer(modifier = Modifier.width(12.dp))
 
             Button(onClick = onAddToCart) {
-                Text("Agregar al pedido")
+                Text("Agregar al carrito")
             }
         }
     }

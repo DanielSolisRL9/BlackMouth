@@ -12,7 +12,7 @@ import androidx.compose.ui.unit.dp
 import com.example.blackmouth.domain.models.MenuItem
 
 @Composable
-fun FavoriteFoodGrid(items: List<MenuItem>) {
+fun FavoriteFoodGrid(items: List<MenuItem>, onClick: (MenuItem) -> Unit) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier
@@ -22,7 +22,7 @@ fun FavoriteFoodGrid(items: List<MenuItem>) {
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         items(items) { item ->
-            CardFavoriteFood(item)
+            CardFavoriteFood(item) { onClick(item) }
         }
     }
 }
