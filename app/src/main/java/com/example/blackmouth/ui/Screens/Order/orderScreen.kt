@@ -29,11 +29,11 @@ fun orderScreen(
     val sampleItems = listOf(
         MenuItem(
             id = "1",
-            name = "Hamburguesa",
-            description = "Deliciosa hamburguesa con queso, lechuga y tomate.",
+            name = "bbq beacon burger",
+            description = "Hamburguesa con carne angus, bacon, queso cheddar, salsa bbq y pan brioche.",
             price = 8.99,
             category = "Comida",
-            imageURL = "https://via.placeholder.com/150"
+            imageURL = "https://highestcreations.com/wp-content/uploads/2023/08/BBQ_Bacon_Burger_With_Caramelized_Onions_fi-scaled.jpg"
         ),
         MenuItem(
             id = "2",
@@ -41,23 +41,23 @@ fun orderScreen(
             description = "Pizza con pepperoni y extra queso.",
             price = 12.50,
             category = "Comida",
-            imageURL = "https://via.placeholder.com/150"
+            imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTI0-HmskFIOzX-o3_DTZdgLshMNluWvZpwAw&s"
         ),
         MenuItem(
             id = "3",
-            name = "Ensalada",
-            description = "Ensalada fresca con pollo y aderezo César.",
+            name = "Milkshake vainilla",
+            description = "milkshake cremoso de vainilla con topping de crema batida y cereza.",
             price = 7.25,
             category = "Comida",
-            imageURL = "https://via.placeholder.com/150"
+            imageURL = "https://comedera.com/wp-content/uploads/sites/9/2022/10/Merengada-de-vainilla-con-chocolatePG_BDVCSD180520002.jpg"
         ),
         MenuItem(
             id = "4",
-            name = "Papas fritas",
-            description = "Papas fritas crujientes con salsa de ketchup.",
+            name = "Papas blackmouth",
+            description = "Papas crujientes con queso derretido y aderezo especial de la casa.",
             price = 3.50,
             category = "Comida",
-            imageURL = "https://via.placeholder.com/150"
+            imageURL = "https://hamburguesasgarfields.com/wp-content/uploads/2018/01/French-Fries-french-fries-1-1-862x582.jpg"
         )
     )
 

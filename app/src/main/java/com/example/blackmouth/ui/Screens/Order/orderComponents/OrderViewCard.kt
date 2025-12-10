@@ -58,8 +58,7 @@ fun OrderViewCard(
                 contentDescription = menuItem.name ?: "",
                 modifier = Modifier
                     .size(60.dp)
-                    .clip(RoundedCornerShape(8.dp))
-                    .background(Color.White),
+                    .clip(RoundedCornerShape(8.dp)),
                 contentScale = ContentScale.Crop
             )
 
