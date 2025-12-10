@@ -43,7 +43,6 @@ fun OrderViewCard(
                 shape = RoundedCornerShape(24.dp)
             ),
         shape = RoundedCornerShape(24.dp),
-        elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
             containerColor = Color(0x92D0D0D5),
             contentColor = Color.Black)
@@ -59,7 +58,8 @@ fun OrderViewCard(
                 contentDescription = menuItem.name ?: "",
                 modifier = Modifier
                     .size(60.dp)
-                    .clip(RoundedCornerShape(8.dp)),
+                    .clip(RoundedCornerShape(8.dp))
+                    .background(Color.White),
                 contentScale = ContentScale.Crop
             )
 

@@ -37,33 +37,22 @@ fun orderScreen(
     )
 
 
-    LazyColumn(
+    Column(
         modifier = Modifier
             .fillMaxSize()
             .background(Color.White)
             .padding(paddingValues)
-            .padding(start = 15.dp, end = 15.dp)
+            .padding(15.dp)
     ) {
-        item {
             OrderHeader(navController)
-        }
 
-        item {
             Spacer(modifier = Modifier.height(10.dp))
+        LazyColumn( ) {
+           item {   OrderViewCard(menuItem = sampleItem) //Hasta ahora se enseña sampleitem
+            }
         }
-
-        item {
-            OrderViewCard(menuItem = sampleItem) //Hasta ahora se enseña sampleitem
-        }
-
-        item {
-            Spacer(modifier = Modifier.height(550.dp))
-        }
-
-        item {
+        Spacer(modifier = Modifier.height(500.dp))
             BotonContinue()
-        }
-
     }
 }
 
