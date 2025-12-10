@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -28,33 +29,41 @@ import com.example.blackmouth.ui.Screens.OrderScreenRoute
 import com.example.blackmouth.ui.Screens.RegisterScreenRoute
 import com.example.blackmouth.ui.Screens.UserScreen.UserScreen
 import com.example.blackmouth.ui.theme.BlackMouthTheme
+import com.example.blackmouth.ui.viewModels.MenuViewModel
 
 class MainActivity : ComponentActivity() {
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // 👉 Crear ViewModel correctamente
+        val menuViewModel: MenuViewModel by viewModels()
+
         setContent {
             BlackMouthTheme {
                 val navController = rememberNavController()
                 val navBackStackEntry by navController.currentBackStackEntryAsState()
                 val currentDestination = navBackStackEntry?.destination?.route
+
                 Scaffold(
                     modifier = Modifier.fillMaxSize(),
                     bottomBar = {
                         if (
                             currentDestination != LoginScreenRoute::class.qualifiedName &&
                             currentDestination != RegisterScreenRoute::class.qualifiedName
-                        ){
+                        ) {
                             NavBar(navController = navController)
                         }
                     }
-                )
-                { innerPadding ->
+                ) { innerPadding ->
+
                     NavHost(
                         navController = navController,
                         startDestination = HomeScreenRoute
-                    ){
-                        composable <LoginScreenRoute>{
+                    ) {
+
+                        composable<LoginScreenRoute> {
                             LoginScreen(
                                 paddingValues = innerPadding,
                                 navController = navController
@@ -71,28 +80,29 @@ class MainActivity : ComponentActivity() {
                         composable<HomeScreenRoute> {
                             HomeScreen(
                                 paddingValues = innerPadding,
-                                navController = navController
+                                navController = navController,
+                                viewModel = menuViewModel // 👉 PASAR EL VIEWMODEL AQUÍ
                             )
                         }
 
-                        composable<AccountScreenRoute>{
+                        composable<AccountScreenRoute> {
                             UserScreen(
                                 paddingValues = innerPadding,
                                 navController = navController
                             )
                         }
 
-                        composable<OrderScreenRoute>{
+                        composable<OrderScreenRoute> {
                             orderScreen(
                                 paddingValues = innerPadding,
                                 navController = navController
                             )
                         }
                     }
-
                 }
             }
         }
     }
 }
+
 
