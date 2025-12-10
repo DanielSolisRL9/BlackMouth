@@ -17,7 +17,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -37,10 +37,10 @@ fun HomeScreen(
     navController: NavController,
     viewModel: MenuViewModel
 ) {
-    // Observa LiveData del ViewModel
-    val menuItems by viewModel.menuItems.observeAsState(emptyList())
-    val isLoading by viewModel.isLoading.observeAsState(false)
-    val errorMessage by viewModel.errorMessage.observeAsState(null)
+    // 🚀 Colectar StateFlow correctamente
+    val menuItems by viewModel.menuItems.collectAsState()
+    val isLoading by viewModel.isLoading.collectAsState()
+    val errorMessage by viewModel.errorMessage.collectAsState()
 
     // Ejecutar API al abrir pantalla
     LaunchedEffect(Unit) {
