@@ -9,11 +9,10 @@ import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.example.blackmouth.domain.models.MenuItem
 
 @Composable
-fun FavoriteFoodGrid(){
-    val items = listOf(1,2,3,4)
-
+fun FavoriteFoodGrid(items: List<MenuItem>) {
     LazyVerticalGrid(
         columns = GridCells.Fixed(2),
         modifier = Modifier
@@ -22,8 +21,8 @@ fun FavoriteFoodGrid(){
         verticalArrangement = Arrangement.spacedBy(10.dp),
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
-        items(items.size){ index ->
-            CardFavoriteFood()
+        items(items) { item ->
+            CardFavoriteFood(item)
         }
     }
 }
