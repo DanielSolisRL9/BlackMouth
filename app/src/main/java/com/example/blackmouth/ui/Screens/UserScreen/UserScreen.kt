@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
@@ -63,19 +64,20 @@ fun UserScreen(
         }
         Spacer(modifier = Modifier
             .height(30.dp))
-        Column (
+        LazyColumn(
             verticalArrangement = Arrangement.spacedBy(30.dp)
-        ){
-            OptionList(Icons.Default.Menu, "Menú")
-            OptionList(Icons.Default.ShoppingCart, "Mi orden")
-            OptionList(Icons.Default.Notifications, "Promociones")
-            OptionList(Icons.Default.LocationOn, "Ubicación")
-            OptionList(Icons.Default.Info, "Horarios")
-            OptionList(Icons.Default.Home, "Domicilio")
-            OptionList(Icons.Default.Refresh, "Historial de pedidos")
-            OptionList(Icons.Default.Person, "Mi cuenta")
-            OptionList(Icons.Default.Build, "Ayuda")
-            OptionList(Icons.Default.Settings, "Configuración")
+        ) {
+            item { OptionList(Icons.Default.Menu, "Menú") }
+            item { OptionList(Icons.Default.ShoppingCart, "Mi orden") }
+            item { OptionList(Icons.Default.Notifications, "Promociones") }
+            item { OptionList(Icons.Default.LocationOn, "Ubicación") }
+            item { OptionList(Icons.Default.Info, "Horarios") }
+            item { OptionList(Icons.Default.Home, "Domicilio") }
+            item { OptionList(Icons.Default.Refresh, "Historial de pedidos") }
+            item { OptionList(Icons.Default.Person, "Mi cuenta") }
+            item { OptionList(Icons.Default.Build, "Ayuda") }
+            item { OptionList(Icons.Default.Settings, "Configuración") }
         }
+
     }
 }

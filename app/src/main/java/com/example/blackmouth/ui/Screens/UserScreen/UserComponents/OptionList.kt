@@ -33,7 +33,7 @@ fun OptionList(icon : ImageVector,description : String){
         Spacer(
             modifier = Modifier
                 .width(10.dp))
-        Text(text = description, fontWeight = FontWeight.Bold, fontSize = 27.sp)
+        Text(text = description, fontWeight = FontWeight.Bold, fontSize = 17.sp)
     }
 }
 

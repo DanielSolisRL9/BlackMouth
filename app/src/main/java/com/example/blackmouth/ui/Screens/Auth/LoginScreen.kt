@@ -31,8 +31,8 @@ import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
 fun LoginScreen(
-    paddingValues: PaddingValues,
-    navController: NavController
+   paddingValues: PaddingValues,
+   navController: NavController
 ){
     Column (
         modifier = Modifier
