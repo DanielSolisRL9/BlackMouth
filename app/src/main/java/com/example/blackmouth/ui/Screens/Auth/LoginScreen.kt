@@ -37,6 +37,14 @@ fun LoginScreen(
 
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
+    var errorMessage by remember { mutableStateOf<String?>(null) }
+
+    LaunchedEffect(errorMessage) {
+        if (errorMessage != null) {
+            kotlinx.coroutines.delay(2500)
+            errorMessage = null
+        }
+    }
 
     Column(
         modifier = Modifier
@@ -90,13 +98,13 @@ fun LoginScreen(
             )
 
             LoginButton("Iniciar Sesión") {
-                viewModel.login(email, password) { result, message ->
+                viewModel.login(email, password) { result, _ ->
                     if (result) {
                         navController.navigate(HomeScreenRoute) {
                             popUpTo(LoginScreenRoute) { inclusive = true }
                         }
                     } else {
-                        println(message)
+                        errorMessage = "Correo o contraseña incorrectos"
                     }
                 }
             }
@@ -111,7 +119,13 @@ fun LoginScreen(
             )
         }
     }
-    if (viewModel.isLoading){
-        Animacion("Iniciar Sesión")
+
+    if (viewModel.isLoading) {
+        Animacion("Iniciando sesión...")
+    }
+
+    if (errorMessage != null) {
+        Animacion(errorMessage!!)
     }
 }
+
