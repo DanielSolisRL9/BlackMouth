@@ -92,17 +92,11 @@ class MainActivity : ComponentActivity() {
                             )
                         }
 
-                        composable<OrderScreenRoute> {
-                            orderScreen(
-                                paddingValues = innerPadding,
-                                navController = navController
-                            )
                         }
                     }
                 }
             }
         }
     }
-}
 
 
