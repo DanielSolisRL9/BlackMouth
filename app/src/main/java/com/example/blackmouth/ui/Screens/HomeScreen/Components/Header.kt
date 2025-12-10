@@ -21,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
-fun Header(/*poner el logout*/){
+fun Header(onLogout: () -> Unit){
     Row (
         modifier = Modifier
             .fillMaxWidth(),
@@ -55,7 +55,7 @@ fun Header(/*poner el logout*/){
         }
 
         IconButton(
-            onClick = {}//poner el logout
+            onClick = onLogout
         ) {
             Icon(
                 imageVector = Icons.Default.ExitToApp,
@@ -69,10 +69,3 @@ fun Header(/*poner el logout*/){
     }
 }
 
-@Preview
-@Composable
-fun HeaderView(){
-    BlackMouthTheme {
-        Header()
-    }
-}

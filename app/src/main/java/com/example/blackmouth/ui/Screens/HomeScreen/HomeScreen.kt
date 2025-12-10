@@ -18,6 +18,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.blackmouth.domain.models.MenuItem
 import com.example.blackmouth.ui.Screens.HomeScreen.Components.*
+import com.example.blackmouth.ui.Screens.HomeScreenRoute
+import com.example.blackmouth.ui.Screens.LoginScreenRoute
 import com.example.blackmouth.ui.Screens.MenuDetail.Components.MenuItemDTO
 import com.example.blackmouth.ui.Screens.MenuDetail.Components.MenuItemDetail
 import com.example.blackmouth.ui.viewModels.MenuViewModel
@@ -60,7 +62,15 @@ fun HomeScreen(
                 .padding(paddingValues)
                 .padding(horizontal = 15.dp)
         ) {
-            item { Header() }
+            item { Header(
+                onLogout = {
+                    navController.navigate(LoginScreenRoute){
+                        popUpTo(HomeScreenRoute){
+                            inclusive = true
+                        }
+                    }
+                }
+            ) }
 
             item {
                 OutLinedTextField(
