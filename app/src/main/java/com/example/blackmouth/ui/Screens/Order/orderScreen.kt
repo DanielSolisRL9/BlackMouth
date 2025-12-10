@@ -22,20 +22,44 @@ import com.example.blackmouth.ui.theme.BlackMouthTheme
 
 @Composable
 fun orderScreen(
-
     paddingValues: PaddingValues,
     navController: NavController
-
 ){
-    val sampleItem = MenuItem(
-        id = "1",
-        name = "Hamburguesa",
-        description = "Deliciosa hamburguesa con queso, lechuga y tomate.",
-        price = 8.99,
-        category = "Comida",
-        imageURL = "https://via.placeholder.com/150"
+    // Lista de pedidos de ejemplo
+    val sampleItems = listOf(
+        MenuItem(
+            id = "1",
+            name = "Hamburguesa",
+            description = "Deliciosa hamburguesa con queso, lechuga y tomate.",
+            price = 8.99,
+            category = "Comida",
+            imageURL = "https://via.placeholder.com/150"
+        ),
+        MenuItem(
+            id = "2",
+            name = "Pizza",
+            description = "Pizza con pepperoni y extra queso.",
+            price = 12.50,
+            category = "Comida",
+            imageURL = "https://via.placeholder.com/150"
+        ),
+        MenuItem(
+            id = "3",
+            name = "Ensalada",
+            description = "Ensalada fresca con pollo y aderezo César.",
+            price = 7.25,
+            category = "Comida",
+            imageURL = "https://via.placeholder.com/150"
+        ),
+        MenuItem(
+            id = "4",
+            name = "Papas fritas",
+            description = "Papas fritas crujientes con salsa de ketchup.",
+            price = 3.50,
+            category = "Comida",
+            imageURL = "https://via.placeholder.com/150"
+        )
     )
-
 
     Column(
         modifier = Modifier
@@ -44,16 +68,18 @@ fun orderScreen(
             .padding(paddingValues)
             .padding(15.dp)
     ) {
-            OrderHeader(navController)
+        OrderHeader(navController)
 
-            Spacer(modifier = Modifier.height(10.dp))
-        LazyColumn( ) {
-           item {   OrderViewCard(menuItem = sampleItem) //Hasta ahora se enseña sampleitem
+        Spacer(modifier = Modifier.height(10.dp))
+
+        LazyColumn {
+            items(sampleItems.size) { index ->
+                OrderViewCard(menuItem = sampleItems[index])
+                Spacer(modifier = Modifier.height(10.dp)) // separación entre pedidos
             }
         }
-        Spacer(modifier = Modifier.height(500.dp))
-            BotonContinue()
+
+        Spacer(modifier = Modifier.height(20.dp))
+        BotonContinue()
     }
 }
-
-
