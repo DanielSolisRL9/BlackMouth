@@ -76,6 +76,8 @@ dependencies {
     implementation("androidx.datastore:datastore-preferences:1.2.0")
     implementation("androidx.datastore:datastore:1.2.0")
 
+    implementation("com.google.accompanist:accompanist-flowlayout:0.34.0")
+
 }
 
 ksp{
